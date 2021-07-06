@@ -1,4 +1,4 @@
-package model
+package database
 
 import "gorm.io/gorm"
 
@@ -10,5 +10,6 @@ type Message struct {
 	ToSex     uint
 	Message   string
 	Anonymous bool
+	ImageUrl  string
 	Status    bool
 }
