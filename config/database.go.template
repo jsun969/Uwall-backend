@@ -2,7 +2,8 @@ package config
 
 var (
 	Address  string = "127.0.0.1"
-	Username string = "name"
+	Port     string = "3306"
+	Username string = "username"
 	Password string = "password"
 	Name     string = "name"
 )
