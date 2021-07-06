@@ -16,3 +16,7 @@
 
 # Goland Idea
 .idea/
+
+# Secret Config
+config/*.go
+!config/*.template.go
