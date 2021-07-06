@@ -14,6 +14,7 @@ func PostLove(c *gin.Context) {
 		return
 	}
 	message := model.Message{
+		Type:      "love",
 		FromName:  req.From.Name,
 		FromSex:   req.From.Sex,
 		ToName:    req.To.Name,
