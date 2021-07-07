@@ -8,7 +8,7 @@ import (
 )
 
 func PostComplaint(c *gin.Context) {
-	var req model.Complaint
+	var req model.Base
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

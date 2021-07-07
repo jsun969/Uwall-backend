@@ -1,8 +1,7 @@
 package model
 
-type Complaint struct {
-	Name      string `json:"name"`
+type BaseWithName struct {
+	Name      string `json:"name" binding:"required"`
 	Message   string `json:"message" binding:"required"`
-	Anonymous bool   `json:"anonymous"`
 	ImageUrl  string `json:"imageUrl"`
 }
