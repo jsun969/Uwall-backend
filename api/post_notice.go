@@ -8,7 +8,7 @@ import (
 )
 
 func PostNotice(c *gin.Context) {
-	var req model.BaseWithName
+	var req model.ReqBaseWithName
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

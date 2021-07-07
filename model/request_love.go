@@ -10,7 +10,7 @@ type to struct {
 	Sex  uint   `json:"sex"`
 }
 
-type Love struct {
+type ReqLove struct {
 	From      from   `json:"from"`
 	To        to     `json:"to" binding:"required"`
 	Message   string `json:"message" binding:"required"`

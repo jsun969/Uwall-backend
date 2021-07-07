@@ -1,6 +1,6 @@
 package model
 
-type APIMessage struct {
+type ResMessage struct {
 	ID        uint   `json:"id"`
 	Type      string `json:"type"`
 	FromName  string `json:"fromName"`
