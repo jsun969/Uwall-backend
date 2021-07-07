@@ -15,4 +15,5 @@ type Love struct {
 	To        to     `json:"to" binding:"required"`
 	Message   string `json:"message" binding:"required"`
 	Anonymous bool   `json:"anonymous"`
+	ImageUrl  string `json:"imageUrl"`
 }

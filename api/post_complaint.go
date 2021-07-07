@@ -18,6 +18,7 @@ func PostComplaint(c *gin.Context) {
 		FromName:  req.Name,
 		Message:   req.Message,
 		Anonymous: req.Anonymous,
+		ImageUrl:  req.ImageUrl,
 		Status:    false,
 	}
 	if result := database.Db.Create(&message); result.Error != nil {
