@@ -21,9 +21,11 @@ func PostLove(c *gin.Context) {
 		ToSex:     req.To.Sex,
 		Message:   req.Message,
 		Anonymous: req.Anonymous,
+		Status:    false,
 	}
 	if result := database.Db.Create(&message); result.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"error": result.Error})
+		return
 	}
 	c.Status(http.StatusCreated)
 }
