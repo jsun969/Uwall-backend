@@ -8,5 +8,6 @@ import (
 func Gin() {
 	r := gin.Default()
 	r.POST("/love", api.PostLove)
+	r.POST("/complaint", api.PostComplaint)
 	r.Run()
 }
