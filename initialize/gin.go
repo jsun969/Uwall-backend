@@ -11,5 +11,6 @@ func Gin() {
 	r.POST("/complaint", api.PostComplaint)
 	r.POST("/help", api.PostHelp)
 	r.POST("/notice", api.PostNotice)
+	r.POST("/expand", api.PostExpand)
 	r.Run()
 }
