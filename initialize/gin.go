@@ -14,5 +14,6 @@ func Gin() {
 	r.POST("/expand", api.PostExpand)
 	r.GET("/messages", api.GetMessages)
 	r.GET("/messages/:mtype", api.GetMessagesWithType)
+	r.POST("/comment", api.PostComment)
 	r.Run()
 }
