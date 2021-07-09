@@ -3,7 +3,6 @@ package api
 import (
 	"Uwall/database"
 	"Uwall/model"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -11,7 +10,6 @@ import (
 
 func GetMessagesWithType(c *gin.Context) {
 	messageType := c.Param("type")
-	fmt.Println(messageType)
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offset, _ := strconv.Atoi(c.Query("offset"))
 	var messages []model.Message
