@@ -13,7 +13,7 @@ func Gin() {
 	r.POST("/notice", api.PostNotice)
 	r.POST("/expand", api.PostExpand)
 	r.GET("/messages", api.GetMessages)
-	r.GET("/messages/:mtype", api.GetMessagesWithType)
+	r.GET("/messages/:type", api.GetMessagesWithType)
 	r.POST("/comment", api.PostComment)
 	r.Run()
 }

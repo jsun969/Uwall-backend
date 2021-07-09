@@ -10,7 +10,7 @@ import (
 )
 
 func GetMessagesWithType(c *gin.Context) {
-	messageType := c.Param("mtype")
+	messageType := c.Param("type")
 	fmt.Println(messageType)
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offset, _ := strconv.Atoi(c.Query("offset"))
