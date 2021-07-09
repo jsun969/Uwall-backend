@@ -28,4 +28,5 @@ type Comment struct {
 	Name       string `json:"name,omitempty"`
 	Comment    string `json:"comment"`
 	Anonymous  bool   `json:"anonymous,omitempty"`
+	Status     bool   `json:"-"`
 }

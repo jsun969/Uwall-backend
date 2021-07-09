@@ -12,7 +12,7 @@ func GetMessages(c *gin.Context) {
 	limit, _ := strconv.Atoi(c.Query("limit"))
 	offset, _ := strconv.Atoi(c.Query("offset"))
 	var messages []model.Message
-	if result := database.Db.Model(&model.Message{}).Preload("Comments").Where("status = ?", "1").Limit(limit).Offset(offset).Find(&messages); result.Error != nil {
+	if result := database.Db.Model(&model.Message{}).Preload("Comments", "status = ?", "1").Where("status = ?", "1").Limit(limit).Offset(offset).Find(&messages); result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": result.Error})
 		return
 	}
