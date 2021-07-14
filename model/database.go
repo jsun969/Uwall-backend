@@ -17,6 +17,7 @@ type Message struct {
 	ToSex     uint           `json:"toSex,omitempty"`
 	Message   string         `json:"message"`
 	Anonymous bool           `json:"anonymous,omitempty"`
+	Likes     uint           `json:"likes"`
 	ImageUrl  string         `json:"imageUrl,omitempty"`
 	Comments  []Comment      `json:"comments,omitempty"`
 	Status    bool           `json:"-"`

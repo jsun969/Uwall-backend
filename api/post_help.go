@@ -18,6 +18,7 @@ func PostHelp(c *gin.Context) {
 		FromName:  req.Name,
 		Message:   req.Message,
 		Anonymous: req.Anonymous,
+		Likes:     0,
 		ImageUrl:  req.ImageUrl,
 		Status:    false,
 	}

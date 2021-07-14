@@ -17,5 +17,6 @@ func Gin() {
 	r.GET("/messages", api.GetMessages)
 	r.GET("/messages/:type", api.GetMessagesWithType)
 	r.POST("/comment", api.PostComment)
+	r.PATCH("/like", api.PatchLike)
 	r.Run()
 }

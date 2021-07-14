@@ -17,6 +17,7 @@ func PostExpand(c *gin.Context) {
 		Type:     "expand",
 		FromName: req.Name,
 		Message:  req.Message,
+		Likes:    0,
 		ImageUrl: req.ImageUrl,
 		Status:   false,
 	}

@@ -21,6 +21,7 @@ func PostLove(c *gin.Context) {
 		ToSex:     req.To.Sex,
 		Message:   req.Message,
 		Anonymous: req.Anonymous,
+		Likes:     0,
 		ImageUrl:  req.ImageUrl,
 		Status:    false,
 	}

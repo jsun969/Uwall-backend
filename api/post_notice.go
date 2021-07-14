@@ -17,6 +17,7 @@ func PostNotice(c *gin.Context) {
 		Type:     "notice",
 		FromName: req.Name,
 		Message:  req.Message,
+		Likes:    0,
 		ImageUrl: req.ImageUrl,
 		Status:   false,
 	}
