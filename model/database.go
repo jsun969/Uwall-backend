@@ -6,8 +6,8 @@ import (
 )
 
 type Message struct {
-	ID        uint           `gorm:"primarykey"`
-	CreatedAt time.Time      `json:"-"`
+	ID        uint           `gorm:"primarykey" json:"id"`
+	CreatedAt time.Time      `json:"time"`
 	UpdatedAt time.Time      `json:"-"`
 	DeletedAt gorm.DeletedAt `json:"-" gorm:"index"`
 	Type      string         `json:"type"`
@@ -23,10 +23,13 @@ type Message struct {
 }
 
 type Comment struct {
-	gorm.Model `json:"-"`
-	MessageID  uint   `json:"-"`
-	Name       string `json:"name,omitempty"`
-	Comment    string `json:"comment"`
-	Anonymous  bool   `json:"anonymous,omitempty"`
-	Status     bool   `json:"-"`
+	ID        uint           `gorm:"primarykey" json:"-"`
+	CreatedAt time.Time      `json:"time"`
+	UpdatedAt time.Time      `json:"-"`
+	DeletedAt gorm.DeletedAt `gorm:"index" json:"-"`
+	MessageID uint           `json:"-"`
+	Name      string         `json:"name,omitempty"`
+	Comment   string         `json:"comment"`
+	Anonymous bool           `json:"anonymous,omitempty"`
+	Status    bool           `json:"-"`
 }
