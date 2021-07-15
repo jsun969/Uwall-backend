@@ -19,7 +19,7 @@ type Message struct {
 	Anonymous bool           `json:"anonymous,omitempty"`
 	Likes     uint           `json:"likes"`
 	ImageUrl  string         `json:"imageUrl,omitempty"`
-	Comments  []Comment      `json:"comments,omitempty"`
+	Comments  []Comment      `json:"comments"`
 	Status    bool           `json:"-"`
 }
 
