@@ -31,6 +31,5 @@ type Comment struct {
 	MessageID uint           `json:"-"`
 	Name      string         `json:"name,omitempty"`
 	Comment   string         `json:"comment"`
-	Anonymous bool           `json:"anonymous,omitempty"`
 	Status    bool           `json:"-"`
 }
