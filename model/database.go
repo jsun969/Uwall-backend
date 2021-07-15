@@ -24,7 +24,7 @@ type Message struct {
 }
 
 type Comment struct {
-	ID        uint           `gorm:"primarykey" json:"-"`
+	ID        uint           `gorm:"primarykey" json:"id"`
 	CreatedAt time.Time      `json:"time"`
 	UpdatedAt time.Time      `json:"-"`
 	DeletedAt gorm.DeletedAt `gorm:"index" json:"-"`
