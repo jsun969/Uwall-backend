@@ -1,16 +1,21 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Model } from 'mongoose';
 import { CreateMessageDto } from './dto/create-message.dto';
-import { MessagesService } from './messages.service';
+import { MessageDocument } from './schemas/message.schema';
 
 @Controller('messages')
 @ApiTags('messages')
 export class MessagesController {
-  constructor(private messagesService: MessagesService) {}
+  constructor(
+    @InjectModel('Message') private messageModel: Model<MessageDocument>,
+  ) {}
 
   @Post()
   @ApiOperation({ summary: 'Create message' })
   async createMessage(@Body() createMessageDto: CreateMessageDto) {
-    return await this.messagesService.create(createMessageDto);
+    const createMessage = new this.messageModel(createMessageDto);
+    return await createMessage.save();
   }
 }
