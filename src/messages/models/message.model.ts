@@ -1,10 +1,7 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Prop } from '@typegoose/typegoose';
+import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
-export type MessageDocument = Message & Document;
-
-@Schema({ timestamps: true })
-export class Message extends Document {
+export class Message extends TimeStamps {
   @Prop({ required: true })
   type!: 'love' | 'complaint' | 'help' | 'notice' | 'expand';
   @Prop({ required: true })
@@ -24,5 +21,3 @@ export class Message extends Document {
   @Prop({ default: false })
   show: boolean;
 }
-
-export const MessageSchema = SchemaFactory.createForClass(Message);

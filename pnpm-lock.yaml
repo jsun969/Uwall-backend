@@ -5,13 +5,14 @@ specifiers:
   '@nestjs/common': ^8.0.0
   '@nestjs/config': ^1.1.6
   '@nestjs/core': ^8.0.0
-  '@nestjs/mongoose': ^9.0.2
   '@nestjs/platform-express': ^8.0.0
   '@nestjs/schematics': ^8.0.0
   '@nestjs/swagger': ^5.1.5
   '@nestjs/testing': ^8.0.0
+  '@typegoose/typegoose': ^9.5.0
   '@types/express': ^4.17.13
   '@types/jest': 27.0.2
+  '@types/mongoose': ^5.11.97
   '@types/node': ^16.0.0
   '@types/supertest': ^2.0.11
   '@typescript-eslint/eslint-plugin': ^5.0.0
@@ -24,6 +25,7 @@ specifiers:
   express: ^4.17.2
   jest: ^27.2.5
   mongoose: ^6.1.6
+  nestjs-typegoose: ^7.1.38
   prettier: ^2.3.2
   reflect-metadata: ^0.1.13
   rimraf: ^3.0.2
@@ -42,13 +44,14 @@ dependencies:
   '@nestjs/common': 8.2.5_e2dd7264172553abc41c1a07952dd8ca
   '@nestjs/config': 1.1.6_4d34bcc4311a780925020c9f901d5309
   '@nestjs/core': 8.2.5_2d391bccf7bae46d184f78881868b795
-  '@nestjs/mongoose': 9.0.2_d0dcdd112d8bc8b008d76a6bfebdf6e6
   '@nestjs/platform-express': 8.2.5_dd9ef2e1e23f087665d46fe53bbbed58
   '@nestjs/swagger': 5.1.5_53f26b9e3dfc6f35a6f9eba4606ad5ff
+  '@typegoose/typegoose': 9.5.0_mongoose@6.1.6
   class-transformer: 0.5.1
   class-validator: 0.13.2
   express: 4.17.2
   mongoose: 6.1.6
+  nestjs-typegoose: 7.1.38_ac6c215ea6333905d1e15b6f6df13e12
   reflect-metadata: 0.1.13
   rimraf: 3.0.2
   rxjs: 7.5.2
@@ -61,6 +64,7 @@ devDependencies:
   '@nestjs/testing': 8.2.5_859bf813e0a1f12e1f364627fa1dbf9e
   '@types/express': 4.17.13
   '@types/jest': 27.0.2
+  '@types/mongoose': 5.11.97
   '@types/node': 16.11.19
   '@types/supertest': 2.0.11
   '@typescript-eslint/eslint-plugin': 5.9.1_b7b2e42b32ee097737cd3e626b10847b
@@ -886,22 +890,6 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/mongoose/9.0.2_d0dcdd112d8bc8b008d76a6bfebdf6e6:
-    resolution: {integrity: sha512-v4Umk3hssJ1RJJIe2LBVHvrsGfY+srq2nfOVCw36PGe7+eObzSBIryMJi+h2mTZpYIohNRGM2O66clEmhctYQQ==}
-    peerDependencies:
-      '@nestjs/common': ^6.0.0 || ^7.0.0 || ^8.0.0
-      '@nestjs/core': ^6.0.0 || ^7.0.0 || ^8.0.0
-      mongoose: ^6.0.2
-      reflect-metadata: ^0.1.12
-      rxjs: ^6.0.0 || ^7.0.0
-    dependencies:
-      '@nestjs/common': 8.2.5_e2dd7264172553abc41c1a07952dd8ca
-      '@nestjs/core': 8.2.5_2d391bccf7bae46d184f78881868b795
-      mongoose: 6.1.6
-      reflect-metadata: 0.1.13
-      rxjs: 7.5.2
-    dev: false
-
   /@nestjs/platform-express/8.2.5_dd9ef2e1e23f087665d46fe53bbbed58:
     resolution: {integrity: sha512-TnOgJ5C63r+8/5xt9FHYkveTB9suBtvXaYliNVM0dNj0zQ7w7kMI5Mcy4TF6JkRuMN63uiqReNTBtmtF2kPsBg==}
     peerDependencies:
@@ -1057,6 +1045,20 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
+  /@typegoose/typegoose/9.5.0_mongoose@6.1.6:
+    resolution: {integrity: sha512-efRfxBpVxUivyQwfHbEcAHMPzibANKcZN85bxmBYuPY5yt9ocuozWXBn6Jy4sKXtmAf/Di0nLZNTJgIClB8EnQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      mongoose: ~6.1.6
+    dependencies:
+      lodash: 4.17.21
+      loglevel: 1.8.0
+      mongoose: 6.1.6
+      reflect-metadata: 0.1.13
+      semver: 7.3.5
+      tslib: 2.3.1
+    dev: false
+
   /@types/babel__core/7.1.18:
     resolution: {integrity: sha512-S7unDjm/C7z2A2R9NzfKCK1I+BAALDtxEmsJBwlB3EzNfb929ykjL++1CK9LO++EIp2fQrC8O+BwjKvz6UeDyQ==}
     dependencies:
@@ -1175,6 +1177,15 @@ packages:
     resolution: {integrity: sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==}
     dev: true
 
+  /@types/mongoose/5.11.97:
+    resolution: {integrity: sha512-cqwOVYT3qXyLiGw7ueU2kX9noE8DPGRY6z8eUxudhXY8NZ7DMKYAxyZkLSevGfhCX3dO/AoX5/SO9lAzfjon0Q==}
+    deprecated: Mongoose publishes its own types, so you do not need to install this package.
+    dependencies:
+      mongoose: 6.1.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@types/node/16.11.19:
     resolution: {integrity: sha512-BPAcfDPoHlRQNKktbsbnpACGdypPFBuX4xQlsWDE7B8XXcfII+SpOLay3/qZmCLb39kV5S1RTYwXdkx2lwLYng==}
 
@@ -1220,14 +1231,12 @@ packages:
 
   /@types/webidl-conversions/6.1.1:
     resolution: {integrity: sha512-XAahCdThVuCFDQLT7R7Pk/vqeObFNL3YqRyFZg+AqAP/W1/w3xHaIxuW7WszQqTbIBOPRcItYJIou3i/mppu3Q==}
-    dev: false
 
   /@types/whatwg-url/8.2.1:
     resolution: {integrity: sha512-2YubE1sjj5ifxievI5Ge1sckb9k/Er66HyR2c+3+I6VDUUg1TLPdYYTEbQ+DjRkS4nTxMJhgWfSfMRD2sl2EYQ==}
     dependencies:
       '@types/node': 16.11.19
       '@types/webidl-conversions': 6.1.1
-    dev: false
 
   /@types/yargs-parser/20.2.1:
     resolution: {integrity: sha512-7tFImggNeNBVMsn0vLrpn1H1uPrUBdnARPTpZoitY37ZrdJREzf7I16tMrlK3hen349gr1NYh8CmZQa7CTG6Aw==}
@@ -1829,7 +1838,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       buffer: 5.7.1
-    dev: false
 
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
@@ -2215,7 +2223,6 @@ packages:
   /denque/2.0.1:
     resolution: {integrity: sha512-tfiWc6BQLXNLpNiR5iGd0Ocu3P3VpxfzFiqubLgMfhfOw9WyvgJBd46CClNn9k3qfbjvT//0cf7AlYRX/OslMQ==}
     engines: {node: '>=0.10'}
-    dev: false
 
   /depd/1.1.2:
     resolution: {integrity: sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=}
@@ -3175,6 +3182,10 @@ packages:
       binary-extensions: 2.2.0
     dev: true
 
+  /is-class/0.0.9:
+    resolution: {integrity: sha512-kUfRnejcRC9YLgblxoJ76dp9gZ3vMKTrDS5I6z2UVMOsHHSImNKCJocjQTkZr38PwiSZ9LVklaHEENaVYeFTXg==}
+    dev: false
+
   /is-core-module/2.8.1:
     resolution: {integrity: sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==}
     dependencies:
@@ -3873,7 +3884,6 @@ packages:
 
   /kareem/2.3.3:
     resolution: {integrity: sha512-uESCXM2KdtOQ8LOvKyTUXEeg0MkYp4wGglTIpGcYHvjJcS5sn2Wkfrfit8m4xSbaNDAw2KdI9elgkOxZbrFYbg==}
-    dev: false
 
   /kleur/3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
@@ -3939,12 +3949,16 @@ packages:
       is-unicode-supported: 0.1.0
     dev: true
 
+  /loglevel/1.8.0:
+    resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
+    engines: {node: '>= 0.6.0'}
+    dev: false
+
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-    dev: true
 
   /macos-release/2.5.0:
     resolution: {integrity: sha512-EIgv+QZ9r+814gjJj0Bt5vSLJLzswGmSUbUpbi9AIr/fsN2IWFBl2NucV9PAiek+U1STK468tEkxmVYUtuAN3g==}
@@ -3988,7 +4002,6 @@ packages:
 
   /memory-pager/1.5.0:
     resolution: {integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==}
-    dev: false
     optional: true
 
   /merge-descriptors/1.0.1:
@@ -4062,7 +4075,6 @@ packages:
     dependencies:
       '@types/whatwg-url': 8.2.1
       whatwg-url: 11.0.0
-    dev: false
 
   /mongodb/4.2.2:
     resolution: {integrity: sha512-zt8rCTnTKyMQppyt63qMnrLM5dbADgUk18ORPF1XbtHLIYCyc9hattaYHi0pqMvNxDpgGgUofSVzS+UQErgTug==}
@@ -4073,7 +4085,6 @@ packages:
       mongodb-connection-string-url: 2.4.1
     optionalDependencies:
       saslprep: 1.0.3
-    dev: false
 
   /mongoose/6.1.6:
     resolution: {integrity: sha512-wvNRJ547x/Bn3EMhwbVInNsEp2OdlMxk4Q/vfgAkw8OI+giZQ72S90ZH0H6VzzIhs4lCU9SwXHYa2O0sPicnEQ==}
@@ -4091,12 +4102,10 @@ packages:
       sliced: 1.0.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /mpath/0.8.4:
     resolution: {integrity: sha512-DTxNZomBcTWlrMW76jy1wvV37X/cNNxPW1y2Jzd4DZkAaC5ZGsm8bfGfNOthcDuRJujXLqiuS6o3Tpy0JEoh7g==}
     engines: {node: '>=4.0.0'}
-    dev: false
 
   /mquery/4.0.0:
     resolution: {integrity: sha512-nGjm89lHja+T/b8cybAby6H0YgA4qYC/lx6UlwvHGqvTq8bDaNeCwl1sY8uRELrNbVWJzIihxVd+vphGGn1vBw==}
@@ -4107,7 +4116,6 @@ packages:
       sliced: 1.0.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
@@ -4153,6 +4161,23 @@ packages:
 
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  /nestjs-typegoose/7.1.38_ac6c215ea6333905d1e15b6f6df13e12:
+    resolution: {integrity: sha512-hYgDliG2IS5CJkzRsTbbfwZk+IP0jEyCaxcRqqXvxZaP5miiH9UvGm3K0hg8X5DuVkmsgTzW3+MxOXmcLm9BOA==}
+    engines: {node: '>=8.10.0'}
+    peerDependencies:
+      '@nestjs/common': ^6.10.1 || ^7.0.0
+      '@nestjs/core': ^6.10.1 || ^7.0.0
+      '@typegoose/typegoose': ^6.2.1 || ^7.0.0
+      mongoose: ^5.10.6
+    dependencies:
+      '@nestjs/common': 8.2.5_e2dd7264172553abc41c1a07952dd8ca
+      '@nestjs/core': 8.2.5_2d391bccf7bae46d184f78881868b795
+      '@typegoose/typegoose': 9.5.0_mongoose@6.1.6
+      is-class: 0.0.9
+      mongoose: 6.1.6
+      reflect-metadata: 0.1.13
+    dev: false
 
   /node-emoji/1.11.0:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
@@ -4562,7 +4587,6 @@ packages:
 
   /regexp-clone/1.0.0:
     resolution: {integrity: sha512-TuAasHQNamyyJ2hb97IuBEif4qBHGjPHBS64sZwytpLEqtBQ1gPJTnOaQ6qmpET16cK14kkjbazl6+p0RRv0yw==}
-    dev: false
 
   /regexpp/3.2.0:
     resolution: {integrity: sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==}
@@ -4667,7 +4691,6 @@ packages:
     requiresBuild: true
     dependencies:
       sparse-bitfield: 3.0.3
-    dev: false
     optional: true
 
   /saxes/5.0.1:
@@ -4705,7 +4728,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /send/0.17.1:
     resolution: {integrity: sha512-BsVKsiGcQMFwT8UxypobUKyv7irCNRHk1T0G680vk88yf6LBByGcZJOTJCrTP2xVN6yI+XjPJcNuE3V4fT9sAg==}
@@ -4810,7 +4832,6 @@ packages:
 
   /sift/13.5.2:
     resolution: {integrity: sha512-+gxdEOMA2J+AI+fVsCqeNn7Tgx3M9ZN9jdi95939l1IJ8cZsqS8sqpJyOkic2SJk+1+98Uwryt/gL6XDaV+UZA==}
-    dev: false
 
   /signal-exit/3.0.6:
     resolution: {integrity: sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==}
@@ -4827,7 +4848,6 @@ packages:
 
   /sliced/1.0.1:
     resolution: {integrity: sha1-CzpmK10Ewxd7GSa+qCsD+Dei70E=}
-    dev: false
 
   /source-map-support/0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
@@ -4856,7 +4876,6 @@ packages:
     resolution: {integrity: sha1-/0rm5oZWBWuks+eSqzM004JzyhE=}
     dependencies:
       memory-pager: 1.5.0
-    dev: false
     optional: true
 
   /sprintf-js/1.0.3:
@@ -5160,7 +5179,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       punycode: 2.1.1
-    dev: false
 
   /tree-kill/1.2.2:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
@@ -5438,7 +5456,6 @@ packages:
   /webidl-conversions/7.0.0:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
     engines: {node: '>=12'}
-    dev: false
 
   /webpack-node-externals/3.0.0:
     resolution: {integrity: sha512-LnL6Z3GGDPht/AigwRh2dvL9PQPFQ8skEpVrWZXLWBYmqcaojHNN0onvHzie6rq7EWKrrBfPYqNEzTJgiwEQDQ==}
@@ -5504,7 +5521,6 @@ packages:
     dependencies:
       tr46: 3.0.0
       webidl-conversions: 7.0.0
-    dev: false
 
   /whatwg-url/5.0.0:
     resolution: {integrity: sha1-lmRU6HZUYuN2RNNib2dCzotwll0=}
@@ -5596,7 +5612,6 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-    dev: true
 
   /yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}

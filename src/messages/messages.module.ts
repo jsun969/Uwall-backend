@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+import { TypegooseModule } from 'nestjs-typegoose';
 import { MessagesController } from './messages.controller';
-import { Message, MessageSchema } from './schemas/message.schema';
+import { Message } from './models/message.model';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: Message.name, schema: MessageSchema }]),
-  ],
+  imports: [TypegooseModule.forFeature([Message])],
   controllers: [MessagesController],
 })
 export class MessagesModule {}

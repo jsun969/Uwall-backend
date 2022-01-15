@@ -1,16 +1,16 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Model } from 'mongoose';
+import { ReturnModelType } from '@typegoose/typegoose';
+import { InjectModel } from 'nestjs-typegoose';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { MessagesQuery } from './dto/messages-query.dto';
-import { MessageDocument } from './schemas/message.schema';
+import { Message } from './models/message.model';
 
 @Controller('messages')
 @ApiTags('messages')
 export class MessagesController {
   constructor(
-    @InjectModel('Message') private messageModel: Model<MessageDocument>,
+    @InjectModel(Message) private messageModel: ReturnModelType<typeof Message>,
   ) {}
 
   @Get()
