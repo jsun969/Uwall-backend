@@ -3,7 +3,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { CreateMessageDto } from './dto/create-message.dto';
-import { MessagesQuery } from './dto/messages-query.dto';
+import { QueryMessageDto } from './dto/query-messages.dto';
 import { Message } from './models/message.model';
 
 @Controller('messages')
@@ -15,7 +15,7 @@ export class MessagesController {
 
   @Get()
   @ApiOperation({ summary: 'Get messages' })
-  async getMessages(@Query() messagesQuery: MessagesQuery) {
+  async getMessages(@Query() messagesQuery: QueryMessageDto) {
     return await this.messageModel
       .find(messagesQuery.type ? { type: messagesQuery.type } : {}, null, {
         skip: messagesQuery.skip,
